@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-
+const { Types } = mongoose;
 
 const excerciceSchema = new mongoose.Schema({
-    username: { type: String, required: true },
-    description: { type: String },
+    userId: { type: Types.ObjectId, ref: 'User', required: true },
+    description: { type: String, required: true },
     duration: { type: Number },
     date: { type: Date, default: Date.now() }
 });
-const existeModel = mongoose.model('Excercice', excerciceSchema);
+const excerciceModel = mongoose.model('Excercice', excerciceSchema);
 
-module.exports = { excerciceSchema, existeModel };
+module.exports = { excerciceSchema, excerciceModel };
